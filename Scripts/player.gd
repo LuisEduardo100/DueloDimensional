@@ -17,6 +17,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var jump_velocity = -350
 @export_group("")
 
+@export_group("CameraSync")
+@export var camera_sync = Camera2D
+@export var should_camera_sync: bool = true
+@export_group("")
+
+func _process(delta):
+	if global_position.x > camera_sync.global_position.x && should_camera_sync:
+		camera_sync.global_position.x = global_position.x
+	if global_position.x < camera_sync.global_position.x && should_camera_sync:
+		camera_sync.global_position.x = global_position.x
+		
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
