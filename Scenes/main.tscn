@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c36dxrb6pyquf"]
+[gd_scene load_steps=45 format=3 uid="uid://c36dxrb6pyquf"]
 
 [ext_resource type="Texture2D" uid="uid://wyadl3cv2x70" path="res://Assets/Tiles/tile_0003.png" id="1_1b5nn"]
 [ext_resource type="Texture2D" uid="uid://bl2iwmb24wbk6" path="res://Assets/Felipe-Idle.png" id="1_i0mot"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b1pi1j5l5ujg1" path="res://Assets/Tiles/tile_0046.png" id="10_pqlcl"]
 [ext_resource type="Texture2D" uid="uid://dt6dn8yks3sii" path="res://Assets/Tiles/tile_0097.png" id="10_ywr26"]
 [ext_resource type="PackedScene" uid="uid://b6183486h3st0" path="res://Scenes/second_phase.tscn" id="20_2e3x4"]
+[ext_resource type="PackedScene" uid="uid://bn710hm8m4a7w" path="res://Scenes/boss_lv_1.tscn" id="21_jm3hh"]
+[ext_resource type="PackedScene" uid="uid://cjy1nn3t8jpgb" path="res://Scenes/dialogue.tscn" id="22_hqorv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtmuh"]
 texture = ExtResource("1_jqnes")
@@ -355,6 +357,9 @@ sources/17 = SubResource("TileSetAtlasSource_cpvcd")
 sources/18 = SubResource("TileSetAtlasSource_sc2qy")
 sources/19 = SubResource("TileSetAtlasSource_a4j4l")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbhcw"]
+size = Vector2(58, 74)
+
 [node name="main" type="Node"]
 
 [node name="background" type="TileMap" parent="."]
@@ -370,8 +375,24 @@ layer_0/tile_data = PackedInt32Array(393201, 0, 0, 393202, 0, 0, 393203, 0, 0, 3
 [node name="SecondPhase" parent="." instance=ExtResource("20_2e3x4")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("1_ly867")]
-position = Vector2(-150, -66)
+position = Vector2(467, 17)
+collision_mask = 6
 camera_sync = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.75, 2.75)
+
+[node name="Boss_LV_1" parent="." instance=ExtResource("21_jm3hh")]
+position = Vector2(736, 53)
+collision_layer = 8
+
+[node name="TooCloseArea" type="Area2D" parent="Boss_LV_1"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss_LV_1/TooCloseArea"]
+position = Vector2(-1, -13)
+shape = SubResource("RectangleShape2D_pbhcw")
+
+[node name="Dialogue" parent="Boss_LV_1" instance=ExtResource("22_hqorv")]
+
+[connection signal="area_entered" from="Boss_LV_1/TooCloseArea" to="Player" method="_on_too_close_area_area_entered"]
