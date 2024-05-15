@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -10,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var area_collision_shape_2d = $Area2D/AreaCollisionShape2D
 @onready var body_collision_shape_2d = $BodyCollisionShape2D
+@onready var lv1_dialogue = $"../Boss_LV_1/Dialogue"
 
 @export_group("Locomotion")
 @export var run_speed_damping = 2.2
@@ -48,3 +50,11 @@ func _physics_process(delta):
 	animated_sprite_2d.trigger_animation(velocity, direction)
 	
 	move_and_slide()
+
+func _on_too_close_area_area_entered(area):
+	velocity.x = 0
+	velocity.y = 0
+	speed = 0
+	jump_velocity = 0
+	lv1_dialogue.fill_questionary("first_boss")
+	lv1_dialogue.visible = !lv1_dialogue.visible
