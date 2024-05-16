@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6183486h3st0"]
+[gd_scene load_steps=28 format=3 uid="uid://b6183486h3st0"]
 
 [ext_resource type="Texture2D" uid="uid://c70r2i5ahhc42" path="res://Assets/Tiles/tile_0104.png" id="1_8bm3e"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_bf7vp"]
 [ext_resource type="Texture2D" uid="uid://bboooehlniygc" path="res://Assets/Tiles/Stone/tile_0004.png" id="2_3en0d"]
 [ext_resource type="Texture2D" uid="uid://c6jn2u0283s22" path="res://Assets/Tiles/tile_0033.png" id="2_7nh8w"]
 [ext_resource type="Texture2D" uid="uid://di06n3nme38p8" path="res://Assets/Tiles/tile_0088.png" id="2_fpvl0"]
@@ -9,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b7jxp8fsnvvxh" path="res://Assets/Tiles/tile_0102.png" id="4_5tk2h"]
 [ext_resource type="Texture2D" uid="uid://7p85p571mpok" path="res://Assets/Tilemap/tilemap-backgrounds_packed.png" id="7_1ith5"]
 [ext_resource type="PackedScene" uid="uid://qxriopmpyn0r" path="res://Scenes/player.tscn" id="8_u0n63"]
+[ext_resource type="PackedScene" uid="uid://bs4ao4qh54fbx" path="res://Scenes/hearts_container.tscn" id="10_cxcq7"]
+[ext_resource type="PackedScene" uid="uid://b27d3k77cbgnf" path="res://Scenes/boss_lv_2.tscn" id="12_1rw3h"]
+[ext_resource type="PackedScene" uid="uid://cjy1nn3t8jpgb" path="res://Scenes/dialogue.tscn" id="13_t1pij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8a1vp"]
 texture = ExtResource("7_1ith5")
@@ -128,8 +132,12 @@ sources/1 = SubResource("TileSetAtlasSource_2ynuk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_571sg"]
 size = Vector2(281, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_076sa"]
+size = Vector2(58, 103)
+
 [node name="SecondPhase" type="Node2D"]
-position = Vector2(990, 16)
+position = Vector2(957, 31)
+script = ExtResource("1_bf7vp")
 
 [node name="background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m35yy")
@@ -146,8 +154,9 @@ tile_set = SubResource("TileSet_x8f16")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327684, 0, 0, 327685, 0, 0, 327687, 0, 0, 327688, 0, 0, 327690, 0, 0, 327691, 0, 0, 393215, 1, 0, 458751, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 393229, 1, 0, 327693, 1, 0, 327692, 1, 0, 393228, 1, 0, 393226, 1, 0, 393225, 1, 0, 393224, 1, 0, 393223, 1, 0, 393222, 1, 0, 393221, 1, 0, 393220, 1, 0, 393227, 1, 0, 327689, 1, 0, 327686, 1, 0, 393219, 1, 0, 393218, 1, 0, 393217, 1, 0, 393216, 1, 0, 327683, 1, 0, 327682, 1, 0)
 
-[node name="Player" parent="." instance=ExtResource("8_u0n63")]
-position = Vector2(-119, 47)
+[node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("8_u0n63")]
+position = Vector2(-110, 43)
+camera_sync = NodePath("../Camera2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-17, 3)
@@ -159,4 +168,21 @@ shape = SubResource("RectangleShape2D_571sg")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.75, 2.75)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("10_cxcq7")]
+
+[node name="Boss_LV_2" parent="." instance=ExtResource("12_1rw3h")]
+position = Vector2(502, 39)
+
+[node name="TooCloseArea" type="Area2D" parent="Boss_LV_2"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss_LV_2/TooCloseArea"]
+position = Vector2(-1, -27.5)
+shape = SubResource("RectangleShape2D_076sa")
+
+[node name="Dialogue" parent="Boss_LV_2" instance=ExtResource("13_t1pij")]
+
 [connection signal="area_entered" from="Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Boss_LV_2/TooCloseArea" to="Player" method="_on_too_close_area_area_entered"]
