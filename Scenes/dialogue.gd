@@ -49,7 +49,7 @@ func check_correct_answer(answer):
 	else:
 		(player_instance as Player).currentHealth -= 1
 		if (player_instance as Player).currentHealth <= 0:
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
 			return
 		healthChanged.emit((player_instance as Player).currentHealth)
 		hearts_container.updateHearts((player_instance as Player).currentHealth)

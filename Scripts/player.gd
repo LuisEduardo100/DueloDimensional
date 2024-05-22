@@ -86,7 +86,8 @@ func _on_too_close_area_area_entered(area):
 func _on_area_2d_area_entered(area):
 	currentHealth -= 1
 	if currentHealth <= 0:
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
 		return
 	healthChanged.emit(currentHealth)
 	respawn_player()

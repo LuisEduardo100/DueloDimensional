@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://di06n3nme38p8" path="res://Assets/Tiles/tile_0088.png" id="6_h28dq"]
 [ext_resource type="Texture2D" uid="uid://ddnj44vamvs8b" path="res://Assets/Tiles/tile_0019.png" id="6_hqxso"]
 [ext_resource type="Texture2D" uid="uid://b2nfasiv35y8h" path="res://Assets/Tiles/tile_0018.png" id="7_8p17a"]
-[ext_resource type="Texture2D" uid="uid://ddctbw27nonmf" path="res://Assets/Tiles/heart.png" id="8_h0i8p"]
+[ext_resource type="Texture2D" uid="uid://ddctbw27nonmf" path="res://Assets/Tiles/tile_0044.png" id="8_h0i8p"]
 [ext_resource type="Texture2D" uid="uid://5fy1u0m54un3" path="res://Assets/Tiles/tile_0059.png" id="8_wggfi"]
 [ext_resource type="Texture2D" uid="uid://c2m28areqq6ck" path="res://Assets/Tiles/tile_0045.png" id="9_0lh2l"]
 [ext_resource type="Texture2D" uid="uid://brgwdabihgjri" path="res://Assets/Tiles/tile_0057.png" id="9_ifxyb"]
