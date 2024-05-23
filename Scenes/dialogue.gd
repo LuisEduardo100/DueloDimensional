@@ -44,7 +44,7 @@ func check_correct_answer(answer):
 				fill_questionary("third_boss", player_instance)
 				answers_done += 1
 			else:
-				# GANHOU!!!
+				get_tree().change_scene_to_file("res://Scenes/you_win.tscn")
 				pass
 	else:
 		(player_instance as Player).currentHealth -= 1

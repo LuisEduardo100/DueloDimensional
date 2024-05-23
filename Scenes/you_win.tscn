@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rgnvn4eq4ug"]
+[gd_scene load_steps=3 format=3 uid="uid://bsr7pmwe84a7n"]
 
-[ext_resource type="FontFile" uid="uid://bstyqfhv3nvy5" path="res://Font/PressStart2P-vaV7.ttf" id="1_hqxw0"]
-[ext_resource type="Script" path="res://Scenes/game_over_screen.gd" id="1_yc8sb"]
+[ext_resource type="FontFile" uid="uid://bstyqfhv3nvy5" path="res://Font/PressStart2P-vaV7.ttf" id="1_85yq0"]
+[ext_resource type="Script" path="res://Scenes/you_win.gd" id="1_y0kkp"]
 
-[node name="GameOverScreen" type="CanvasLayer"]
-script = ExtResource("1_yc8sb")
+[node name="YouWin" type="CanvasLayer"]
+script = ExtResource("1_y0kkp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -26,11 +26,11 @@ theme_override_constants/separation = 50
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/Rows"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("1_hqxw0")
+theme_override_fonts/font = ExtResource("1_85yq0")
 theme_override_font_sizes/font_size = 50
-text = "TENTE DE NOVO!"
+text = "VOCÊ GANHOU!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -43,18 +43,19 @@ layout_mode = 2
 
 [node name="Restart" type="Button" parent="MarginContainer/PanelContainer/Rows/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_hqxw0")
+theme_override_fonts/font = ExtResource("1_85yq0")
 theme_override_font_sizes/font_size = 30
-text = "RECOMEÇAR	"
+text = "JOGAR NOVAMENTE"
 
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/Rows/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_hqxw0")
+theme_override_fonts/font = ExtResource("1_85yq0")
 theme_override_font_sizes/font_size = 30
 text = "SAIR"
 

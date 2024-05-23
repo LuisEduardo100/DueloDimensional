@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlvcha1vwso0f" path="res://Assets/Felipe-Run1.png" id="3_pkjfg"]
 [ext_resource type="Texture2D" uid="uid://81bnyhu2xki0" path="res://Assets/Felipe-Run2.png" id="4_c7t1y"]
 [ext_resource type="Texture2D" uid="uid://cb3n0nv501c2v" path="res://Assets/Felipe-Run3.png" id="5_5qmxp"]
-[ext_resource type="Texture2D" uid="uid://ddctbw27nonmf" path="res://Assets/Tiles/heart.png" id="9_1l5o2"]
+[ext_resource type="Texture2D" uid="uid://ddctbw27nonmf" path="res://Assets/Tiles/tile_0044.png" id="9_1l5o2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yg64t"]
 animations = [{
@@ -57,6 +57,8 @@ script = ExtResource("1_pb5v4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yg64t")
 animation = &"run"
+frame = 2
+frame_progress = 0.601454
 script = ExtResource("2_4rx7c")
 
 [node name="Area2D" type="Area2D" parent="."]

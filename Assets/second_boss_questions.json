@@ -6,7 +6,7 @@
             "b": "2 litros",
             "c": "3 litros"
         },
-        "resposta_verdadeira": "b"
+        "resposta_verdadeira": "a"
     },
     {
         "pergunta": "Se você tem uma balança e coloca 3 kg de maçãs de um lado e 2 kg de bananas do outro, qual lado vai ficar mais pesado?",
