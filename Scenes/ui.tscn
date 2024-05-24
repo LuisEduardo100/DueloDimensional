@@ -9,6 +9,7 @@ script = ExtResource("1_r612a")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1150.0
 offset_bottom = 647.0
+theme_override_constants/margin_top = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -17,6 +18,7 @@ size_flags_vertical = 0
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.709804, 0, 1)
 theme_override_fonts/font = ExtResource("2_xw80k")
 theme_override_font_sizes/font_size = 30
 text = "PONTOS: "
