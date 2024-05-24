@@ -16,6 +16,7 @@ var player_instance = null
 var answers_needed_boss = 5
 var answers_needed = 3
 var answers_done = 1
+var questions_asked = []
 
 func fill_questionary(boss_type, player):
 	current_boss_type = boss_type
@@ -26,7 +27,12 @@ func fill_questionary(boss_type, player):
 	var json_as_dict = json.parse_string(json_as_text)
 
 	var rng = RandomNumberGenerator.new()
+	
 	var q_index = rng.randi_range(0, len(json_as_dict) - 1)
+	while q_index in questions_asked:
+		q_index = rng.randi_range(0, len(json_as_dict) - 1)
+	questions_asked.append(q_index)
+	
 	rich_text_label.bbcode_enabled = true
 	rich_text_label.text = "[color=#000000]" + json_as_dict[q_index]["pergunta"] + "[/color]"
 	button.text = json_as_dict[q_index]["opcoes"]["a"]
