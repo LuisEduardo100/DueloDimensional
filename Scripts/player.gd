@@ -14,7 +14,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var button = $HBoxContainer/Button
 @onready var button_2 = $HBoxContainer/Button2
 @onready var button_3 = $HBoxContainer/Button3
+@onready var ui_points = $UI_POINTS
 
+@export var points = ScoreCode.pointsUi
 @export var maxHealth = 3
 @onready var currentHealth: int = maxHealth
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -33,6 +35,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var camera_sync = Camera2D
 @export var should_camera_sync: bool = true
 @export_group("")
+
+func _ready():
+	ui_points.set_score(points)
 
 func _process(delta):
 	if global_position.x > camera_sync.global_position.x && should_camera_sync:
@@ -88,6 +93,7 @@ func _on_area_2d_area_entered(area):
 	if currentHealth <= 0:
 		#get_tree().reload_current_scene()
 		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+		ScoreCode.pointsUi = 0;
 		return
 	healthChanged.emit(currentHealth)
 	respawn_player()
@@ -109,3 +115,69 @@ func respawn_player():
 		position = player_position
 		return
 
+func add_points(quantity: int):
+	ScoreCode.pointsUi += quantity
+	ui_points.set_score(ScoreCode.pointsUi)
+
+func _on_orange_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_4_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_5_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_6_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_3_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_2_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_7_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_12_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_13_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_14_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_15_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_16_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_9_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_11_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_10_area_entered(area):
+	add_points(100)
+
+
+func _on_orange_8_area_entered(area):
+	add_points(100)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bx4pdgem2ubua"]
+[gd_scene load_steps=23 format=3 uid="uid://bx4pdgem2ubua"]
 
 [ext_resource type="Texture2D" uid="uid://d2fwnol8ee21i" path="res://Assets/itens/Orange.png" id="1_47abt"]
 [ext_resource type="Script" path="res://Scenes/orange_scene.gd" id="1_khyb0"]
+[ext_resource type="AudioStream" uid="uid://d1fv6khbmfsji" path="res://Assets/musics/collect_orange.mp3" id="3_3qboj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijo06"]
 atlas = ExtResource("1_47abt")
@@ -133,6 +134,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bdbg"]
 
 [node name="orange" type="Area2D"]
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_khyb0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -142,5 +145,10 @@ frame_progress = 0.255321
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3bdbg")
+
+[node name="VoceGanhouMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3qboj")
+volume_db = -10.097
+pitch_scale = 1.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

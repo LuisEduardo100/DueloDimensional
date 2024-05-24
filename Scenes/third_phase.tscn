@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cenpn6gwu7ojm"]
+[gd_scene load_steps=32 format=3 uid="uid://cenpn6gwu7ojm"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_b1y4r"]
 [ext_resource type="Texture2D" uid="uid://7p85p571mpok" path="res://Assets/Tilemap/tilemap-backgrounds_packed.png" id="1_dsisq"]
+[ext_resource type="Script" path="res://Scenes/thirdMain.gd" id="1_kdylo"]
 [ext_resource type="Texture2D" uid="uid://cl8c23xvwube0" path="res://Assets/Tiles/tile_0062.png" id="2_hm0xa"]
 [ext_resource type="Texture2D" uid="uid://cy5ygknppw1mm" path="res://Assets/Tiles/tile_0060.png" id="2_vs0m2"]
 [ext_resource type="Texture2D" uid="uid://dav8qymoi5vvu" path="res://Assets/Tiles/tile_0061.png" id="3_j8cb0"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bs4ao4qh54fbx" path="res://Scenes/hearts_container.tscn" id="12_pybgp"]
 [ext_resource type="PackedScene" uid="uid://dd62uyh6bmgij" path="res://Scenes/boss_lv_3.tscn" id="13_xid0c"]
 [ext_resource type="PackedScene" uid="uid://cjy1nn3t8jpgb" path="res://Scenes/dialogue.tscn" id="14_7ybhn"]
+[ext_resource type="AudioStream" uid="uid://cxrjpbv0csoyw" path="res://Assets/musics/success.mp3" id="14_rls6d"]
+[ext_resource type="AudioStream" uid="uid://cl5eggt4harc6" path="res://Assets/musics/error.mp3" id="15_g8o52"]
+[ext_resource type="PackedScene" uid="uid://bx4pdgem2ubua" path="res://Scenes/orange_scene.tscn" id="17_gn1d5"]
+[ext_resource type="AudioStream" uid="uid://bspuewksgjbmk" path="res://Assets/musics/musicMap3.mp3" id="18_v7jxj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hri2"]
 texture = ExtResource("1_dsisq")
@@ -149,7 +153,7 @@ size = Vector2(58, 120.5)
 
 [node name="ThirdPhase" type="Node2D"]
 position = Vector2(0, 16)
-script = ExtResource("1_b1y4r")
+script = ExtResource("1_kdylo")
 
 [node name="background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_x45nl")
@@ -188,9 +192,82 @@ collision_layer = 4
 position = Vector2(-32, 3.25)
 shape = SubResource("RectangleShape2D_4p7t7")
 
+[node name="sucess" type="AudioStreamPlayer" parent="Boss_LV_3"]
+stream = ExtResource("14_rls6d")
+
+[node name="error" type="AudioStreamPlayer" parent="Boss_LV_3"]
+stream = ExtResource("15_g8o52")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("12_pybgp")]
 
+[node name="orange3" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(26, 24)
+
+[node name="orange2" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(401, -27)
+
+[node name="orange5" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(98, 76)
+
+[node name="orange6" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(514, -90)
+
+[node name="orange7" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(481, -190)
+
+[node name="orange8" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(547, -2)
+
+[node name="orange" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(550, 35)
+
+[node name="orange9" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(-42, 30)
+
+[node name="orange10" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(247, -53)
+
+[node name="orange11" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(-43, -7)
+
+[node name="orange12" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(345, -87)
+
+[node name="orange13" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(465, -55)
+
+[node name="orange14" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(200, -7)
+
+[node name="orange15" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(-42, 64)
+
+[node name="orange16" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(542, -46)
+
+[node name="orange4" parent="." instance=ExtResource("17_gn1d5")]
+position = Vector2(-43, -42)
+
+[node name="MusicMapa3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_v7jxj")
+
 [connection signal="area_entered" from="Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Boss_LV_3/TooCloseArea" to="Player" method="_on_too_close_area_area_entered"]
+[connection signal="area_entered" from="orange3" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange2" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange5" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange6" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange7" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange8" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange9" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange10" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange11" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange12" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange13" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange14" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange15" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange16" to="Player" method="_on_orange_4_area_entered"]
+[connection signal="area_entered" from="orange4" to="Player" method="_on_orange_4_area_entered"]

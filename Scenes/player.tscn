@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qxriopmpyn0r"]
+[gd_scene load_steps=14 format=3 uid="uid://qxriopmpyn0r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pb5v4"]
 [ext_resource type="Script" path="res://Scripts/player_animated_sprite.gd" id="2_4rx7c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://81bnyhu2xki0" path="res://Assets/Felipe-Run2.png" id="4_c7t1y"]
 [ext_resource type="Texture2D" uid="uid://cb3n0nv501c2v" path="res://Assets/Felipe-Run3.png" id="5_5qmxp"]
 [ext_resource type="Texture2D" uid="uid://ddctbw27nonmf" path="res://Assets/Tiles/tile_0044.png" id="9_1l5o2"]
+[ext_resource type="PackedScene" uid="uid://dqd2vrj1wu2t5" path="res://Scenes/ui.tscn" id="9_mibqx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yg64t"]
 animations = [{
@@ -61,10 +62,10 @@ frame = 2
 frame_progress = 0.601454
 script = ExtResource("2_4rx7c")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlayerArea2D" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="AreaCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="AreaCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_4kebd")
 
@@ -90,3 +91,5 @@ offset_right = -169.0
 offset_bottom = -79.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_1l5o2")
+
+[node name="UI_POINTS" parent="." instance=ExtResource("9_mibqx")]

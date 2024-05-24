@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rgnvn4eq4ug"]
+[gd_scene load_steps=4 format=3 uid="uid://b7rgnvn4eq4ug"]
 
 [ext_resource type="FontFile" uid="uid://bstyqfhv3nvy5" path="res://Font/PressStart2P-vaV7.ttf" id="1_hqxw0"]
 [ext_resource type="Script" path="res://Scenes/game_over_screen.gd" id="1_yc8sb"]
+[ext_resource type="AudioStream" uid="uid://dwn2b6f2p3n4l" path="res://Assets/musics/you_lose.mp3" id="3_merq8"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_yc8sb")
@@ -52,11 +53,15 @@ text = "RECOMEÇAR	"
 
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/Rows/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_hqxw0")
 theme_override_font_sizes/font_size = 30
 text = "SAIR"
+
+[node name="VoceGanhouMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_merq8")
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/Rows/CenterContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Rows/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
